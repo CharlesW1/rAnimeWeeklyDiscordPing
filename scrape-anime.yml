@@ -1,0 +1,27 @@
+name: Scrape Reddit Anime
+
+on:
+  schedule:
+    - cron: '0 17 * * 5' # every Friday at 9:00 PST
+  workflow_dispatch: # manual trigger
+
+jobs:
+  scrape:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repo
+      uses: actions/checkout@v3
+
+    - name: Setup Node.js
+      uses: actions/setup-node@v3
+      with:
+        node-version: '18'
+
+    - name: Install Puppeteer
+      run: npm install puppeteer
+
+    - name: Run Scraper
+      run: node scraper.js
+      env:
+        DISCORD_WEBHOOK: ${{ secrets.DISCORD_WEBHOOK }}

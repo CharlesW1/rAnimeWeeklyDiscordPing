@@ -37,6 +37,8 @@ const axios = require('axios');
     window.scrollBy(0, window.innerHeight * 2);
   });
   await new Promise((resolve) => setTimeout(resolve, 2000));
+  await page.screenshot({ path: 'debug1.png', fullPage: true });
+
 
   // Click the 3rd post
   const postSelector =
@@ -56,7 +58,7 @@ const axios = require('axios');
   await new Promise((resolve) => setTimeout(resolve, 2000));
 
   // Take a screenshot for debugging
-  await page.screenshot({ path: 'debug.png', fullPage: true });
+  await page.screenshot({ path: 'debug2.png', fullPage: true });
 
   // Extract image src
   let imageUrl;
